@@ -1,11 +1,20 @@
 class Bullet extends GameObject {
 
-  Bullet() {
-    super(myPlayer.x, myPlayer.y, 5, 1, yellow);
+  Bullet(float x, float y, float size, float hp, color c) {
+    super(x, y, size, 1, c);
+    if (c == yellow) {
     PVector aim = new PVector(mouseX - myPlayer.x, mouseY - myPlayer.y);
     aim.setMag(10);
     vx = aim.x;
     vy = aim.y;
+    }
+    
+    if (c == pink) {
+      PVector aim = new PVector(myPlayer.x - x, myPlayer.y - y);
+    aim.setMag(10);
+    vx = aim.x;
+    vy = aim.y;
+    }
   }
 
   void act() {
@@ -24,7 +33,7 @@ class Bullet extends GameObject {
           vy = bounce.y;
         
       }
-      if (obj instanceof Enemy && touching(obj)) {
+      if (obj instanceof Enemy && touching(obj) && myColor == yellow) {
         obj.hp--; 
       }
       i++;
