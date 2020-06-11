@@ -32,6 +32,11 @@ wkey = akey = skey = dkey = spacekey = false;
   objects = new ArrayList<GameObject>();
   myPlayer = new Player();
   objects.add(myPlayer);
+  int i = 0;
+  while (i < 50) {
+    objects.add(new Obstacle());
+    i++; 
+  }
 }
 
 //##################################################################################//
